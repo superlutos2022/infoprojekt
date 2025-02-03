@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Horror Geschichte</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<style>
+    body {
+          margin: 0;
+          padding: 0;
+          height: 100vh;
+          background: url('img/mensa.jpeg') no-repeat center center;
+          background-size: cover;
+          font-family: 'Courier New', Courier, monospace;
+          color: white;
+          overflow: hidden;
+      }
+</style>
+<body>
+  <div id="popup">
+    <p id="story-text"></p>
+    <button id="next-button" disabled>Weiter</button>
+    <div class="button-container">
+      <button id="choice1" style="display: none;">Knopf 1</button>
+      <button id="choice2" style="display: none;">Knopf 2</button>
+    </div>
+  </div>
+
+  <script>
+    const storyTexts = [
+      "Lorem ipsum dolor sit, amet consectetur adipisicing elit. Ab quas fuga adipisci ipsam inventore quod consequatur non est vero eum corporis asperiores obcaecati, velit incidunt rerum sequi dolorum at sed?",
+      "Lorem ipsum dolor sit, amet consectetur adipisicing elit. Ab quas fuga adipisci ipsam inventore quod consequatur non est vero eum corporis asperiores obcaecati, velit incidunt rerum sequi dolorum at sed?",
+    ];
+
+    let currentTextIndex = 0;
+    let popup = document.getElementById('popup');
+    let storyText = document.getElementById('story-text');
+    let nextButton = document.getElementById('next-button');
+    let choice1 = document.getElementById('choice1');
+    let choice2 = document.getElementById('choice2');
+
+    setTimeout(() => {
+      popup.style.display = 'block';
+      typeText(storyTexts[currentTextIndex]);
+    }, 3000);
+
+    function typeText(text) {
+      let i = 0;
+      storyText.textContent = '';
+      nextButton.disabled = true;
+
+      function type() {
+        if (i < text.length) {
+          storyText.textContent += text.charAt(i);
+          i++;
+          setTimeout(type, 50); 
+        } else {
+          nextButton.disabled = false; 
+        }
+      }
+
+      type();
+    }
+
+    nextButton.addEventListener('click', () => {
+      currentTextIndex++;
+      if (currentTextIndex < storyTexts.length) {
+        typeText(storyTexts[currentTextIndex]);
+      } else {
+        nextButton.style.display = 'none';
+        choice1.style.display = 'inline-block';
+        choice2.style.display = 'inline-block';
+        typeText("Was möchtest du tun?");
+      }
+    });
+
+    choice1.addEventListener('click', () => {
+      window.location.href = "http://127.0.0.1:5500/index.html";
+    });
+
+    choice2.addEventListener('click', () => {
+      window.location.href = "http://127.0.0.1:5500/index.html";
+    });
+  </script>
+</body>
+</html>
