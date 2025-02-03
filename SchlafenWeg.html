@@ -11,7 +11,7 @@
           margin: 0;
           padding: 0;
           height: 100vh;
-          background: url('img/mensa.jpeg') no-repeat center center;
+          background: url('img/flugzeug.jpg') no-repeat center center;
           background-size: cover;
           font-family: 'Courier New', Courier, monospace;
           color: white;
@@ -23,15 +23,22 @@
     <p id="story-text"></p>
     <button id="next-button" disabled>Weiter</button>
     <div class="button-container">
-      <button id="choice1" style="display: none;">Knopf 1</button>
-      <button id="choice2" style="display: none;">Knopf 2</button>
+      <button id="choice1" style="display: none;"></button>
+      <button id="choice2" style="display: none;"></button>
     </div>
   </div>
 
   <script>
     const storyTexts = [
-      "Lorem ipsum dolor sit, amet consectetur adipisicing elit. Ab quas fuga adipisci ipsam inventore quod consequatur non est vero eum corporis asperiores obcaecati, velit incidunt rerum sequi dolorum at sed?",
-      "Lorem ipsum dolor sit, amet consectetur adipisicing elit. Ab quas fuga adipisci ipsam inventore quod consequatur non est vero eum corporis asperiores obcaecati, velit incidunt rerum sequi dolorum at sed?",
+      "Du träumst von deiner Hochzeit.....alle deine Freunde sind gekommen",
+      "Du kniest dich nieder und fragst, Willst du meine Frau werden",
+      " Sie Sagt",
+      "Es war alles geträumt",
+      "Du wirst durch laute Schreie geweckt",
+      "Du siehst dich um......überall sind tote menschen...",
+
+
+
     ];
 
     let currentTextIndex = 0;
@@ -44,7 +51,7 @@
     setTimeout(() => {
       popup.style.display = 'block';
       typeText(storyTexts[currentTextIndex]);
-    }, 3000);
+    }, 2000);
 
     function typeText(text) {
       let i = 0;
@@ -77,11 +84,11 @@
     });
 
     choice1.addEventListener('click', () => {
-      window.location.href = "http://127.0.0.1:5500/index.html";
+      window.location.href = "http://127.0.0.1:5500/";
     });
 
     choice2.addEventListener('click', () => {
-      window.location.href = "http://127.0.0.1:5500/index.html";
+      window.location.href = "http://127.0.0.1:5500/";
     });
   </script>
 </body>
